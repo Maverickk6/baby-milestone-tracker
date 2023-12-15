@@ -29,7 +29,6 @@ class MilestoneController extends GetxController {
 
   var milestone = <Milestone>[].obs;
 
-
   void addMilestone() async {
     Milestone milestone = Milestone();
     milestone.type = typetext.text;
@@ -60,8 +59,24 @@ class MilestoneController extends GetxController {
     datetext.clear();
   }
 
-  deleteMilestone() async {
+  deleteMilestone(id) async {
+    try {
+      final result = await Milestone().select().id.equals(id).delete();
 
+      Get.showSnackbar(const GetSnackBar(
+        title: 'Milestone',
+        message: 'Milestone deleted successfully',
+        duration: Duration(seconds: 3),
+      ));
+      loadMilestones();
+      return result;
+    } catch (e) {
+      Get.showSnackbar(GetSnackBar(
+        title: 'Error deleting Milestone',
+        message: '$e.message.toString()',
+        duration: const Duration(seconds: 3),
+      ));
+    }
   }
 
   Future<Map<String, dynamic>> getMilestone(int id) async {

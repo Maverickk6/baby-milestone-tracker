@@ -1,8 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:baby_milestones_tracker/widgets/delete_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import '../utils/utils.dart';
+import '../view_model/milestone_viewmodel.dart';
 
 class TileWidget extends StatelessWidget {
   const TileWidget(
@@ -22,6 +25,7 @@ class TileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceSize = context.deviceSize;
+    final milestoneView = Get.put(MilestoneController());
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -100,7 +104,9 @@ class TileWidget extends StatelessWidget {
                   ),
                   const Gap(6),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      showDeleteDialog(context, id);
+                    },
                     child: Container(
                       width: deviceSize.width * 0.17,
                       decoration: BoxDecoration(

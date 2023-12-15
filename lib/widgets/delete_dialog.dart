@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import '../view_model/milestone_viewmodel.dart';
 
-showAddDialog(BuildContext context) {
+showDeleteDialog(BuildContext context, id) {
   final milestoneView = Get.put(MilestoneController());
 
   return showDialog(
@@ -21,7 +21,10 @@ showAddDialog(BuildContext context) {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                milestoneView.deleteMilestone(id);
+                navigator?.pop(context);
+              },
               child: const Text('Yes'),
             ),
             ElevatedButton(
