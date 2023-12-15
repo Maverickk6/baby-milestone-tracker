@@ -11,7 +11,7 @@ showAddDialog(BuildContext context) {
     context: context,
     builder: (_) => AlertDialog(
       backgroundColor: Colors.white,
-      title: Text('Add a milestone', style: TextStyle(fontSize: 18)),
+      title: const Text('Add a milestone', style: TextStyle(fontSize: 18)),
       content: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
@@ -60,7 +60,9 @@ showAddDialog(BuildContext context) {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    navigator?.pop(context);
+                  },
                   child: const Text('Cancel'),
                 ),
                 ElevatedButton(

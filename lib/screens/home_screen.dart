@@ -1,5 +1,5 @@
 import 'package:baby_milestones_tracker/view_model/milestone_viewmodel.dart';
-import 'package:baby_milestones_tracker/widgets/dialog.dart';
+import 'package:baby_milestones_tracker/widgets/add_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';

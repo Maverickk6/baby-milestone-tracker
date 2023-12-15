@@ -29,14 +29,6 @@ class MilestoneController extends GetxController {
 
   var milestone = <Milestone>[].obs;
 
-  // void addItem() async {
-  //   Milestone milestones = Milestone();
-  //   milestones.type = 'Learn to sit';
-  //   milestones.description = 'I want my baby to be able to sit on her own';
-  //   milestones.date = DateTime.parse('2023-12-23');
-  //   await milestones.save();
-  //   loadMilestones();
-  // }
 
   void addMilestone() async {
     Milestone milestone = Milestone();
@@ -66,6 +58,10 @@ class MilestoneController extends GetxController {
     typetext.clear();
     descriptiontext.clear();
     datetext.clear();
+  }
+
+  deleteMilestone() async {
+
   }
 
   Future<Map<String, dynamic>> getMilestone(int id) async {
