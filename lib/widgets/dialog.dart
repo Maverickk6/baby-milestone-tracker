@@ -61,11 +61,15 @@ showAddDialog(BuildContext context) {
               children: [
                 ElevatedButton(
                   onPressed: () {},
-                  child: Text('Cancel'),
+                  child: const Text('Cancel'),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
-                  child: Text('Save'),
+                  onPressed: () {
+                    milestoneView.addMilestone();
+                    milestoneView.clear();
+                    navigator?.pop(context);
+                  },
+                  child: const Text('Save'),
                 )
               ],
             )

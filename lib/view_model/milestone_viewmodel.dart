@@ -12,7 +12,7 @@ class MilestoneController extends GetxController {
   TextEditingController datetext = TextEditingController();
 
   void updateSelectedDate(newDate) {
-    datetext.value = newDate;
+    datetext.text = newDate;
   }
 
   @override
@@ -38,32 +38,34 @@ class MilestoneController extends GetxController {
   //   loadMilestones();
   // }
 
-  void addMilestone(
-    String type,
-    String description,
-    String date,
-  ) async {
+  void addMilestone() async {
     Milestone milestone = Milestone();
-    milestone.type = type;
-    milestone.description = description;
-    milestone.date = DateTime.parse(date);
-    if (type != '' && description != '' && date != '') {
-      try {
-        await milestone.save();
-        Get.showSnackbar(const GetSnackBar(
-          title: 'Milestone',
-          message: 'Milestone added successfully',
-          duration: Duration(seconds: 3),
-        ));
-      } catch (e) {
-        Get.showSnackbar(GetSnackBar(
-          title: 'Error adding Milestone',
-          message: '$e.message.toString()',
-          duration: const Duration(seconds: 3),
-        ));
-      }
+    milestone.type = typetext.text;
+    milestone.description = descriptiontext.text;
+    milestone.date = DateTime.parse(datetext.text);
+
+    try {
+      await milestone.save();
+      Get.showSnackbar(const GetSnackBar(
+        title: 'Milestone',
+        message: 'Milestone added successfully',
+        duration: Duration(seconds: 3),
+      ));
+    } catch (e) {
+      Get.showSnackbar(GetSnackBar(
+        title: 'Error adding Milestone',
+        message: '$e.message.toString()',
+        duration: const Duration(seconds: 3),
+      ));
     }
+
     loadMilestones();
+  }
+
+  clear() {
+    typetext.clear();
+    descriptiontext.clear();
+    datetext.clear();
   }
 
   Future<Map<String, dynamic>> getMilestone(int id) async {
