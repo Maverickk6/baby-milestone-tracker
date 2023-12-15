@@ -10,7 +10,6 @@ class OnboardScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: IntroductionScreen(
-          
           globalBackgroundColor: const Color.fromARGB(255, 222, 221, 239),
           scrollPhysics: const BouncingScrollPhysics(),
           pages: [
@@ -79,10 +78,10 @@ class OnboardScreen extends StatelessWidget {
             ),
           ],
           onDone: () {
-            Navigator.pushNamed(context, 'home');
+            Navigator.pushReplacementNamed(context, 'home');
           },
           onSkip: () {
-            Navigator.pushNamed(context, 'home');
+            Navigator.pushReplacementNamed(context, 'home');
           },
           showSkipButton: true,
           skip: const Text(

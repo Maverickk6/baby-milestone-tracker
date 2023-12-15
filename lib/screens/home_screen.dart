@@ -1,6 +1,8 @@
 import 'package:baby_milestones_tracker/view_model/milestone_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import '../utils/utils.dart';
 
 import '../widgets/tile_widget.dart';
 
@@ -9,23 +11,38 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceSize = context.deviceSize;
+
     final milestoneView = Get.put(MilestoneController());
     return SafeArea(
       child: Scaffold(
+        backgroundColor: const Color.fromARGB(255, 231, 229, 229),
           body: Obx(
         () => Column(
           children: [
-            const Text('Milestones Screen'),
+            const SizedBox(height: 30),
+            Container(
+              width: deviceSize.width,
+              height: deviceSize.height * 0.2,
+              color: Colors.blue,
+              child: const Center(
+                child: Text('Your Milestones'),
+              ),
+            ),
             const SizedBox(height: 30),
             Expanded(
-              child: ListView.builder(
-                  itemCount: milestoneView.allMilestones.length,
-                  itemBuilder: (context, index) => TileWidget(
-                        type: milestoneView.allMilestones[index].type!,
-                        description:
-                            milestoneView.allMilestones[index].description!,
-                        date: milestoneView.allMilestones[index].date!,
-                      )),
+              child: ListView.separated(
+                separatorBuilder: (context, index) => const Gap(10),
+                itemCount: milestoneView.allMilestones.length,
+                itemBuilder: (context, index) => TileWidget(
+                  type: milestoneView.allMilestones[index].type!,
+                  description: milestoneView.allMilestones[index].description!,
+                  date: milestoneView.allMilestones[index].date!,
+                  created: milestoneView.allMilestones[index].created!,
+                  id: milestoneView.allMilestones[index].id!
+                ),
+
+              ),
             ),
             FloatingActionButton(
               onPressed: () {},

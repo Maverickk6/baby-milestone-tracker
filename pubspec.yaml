@@ -13,9 +13,11 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.9
-  introduction_screen: ^3.1.12
+  gap: ^3.0.1
   get: ^4.6.6
   http: ^1.1.0
+  intl: ^0.18.0
+  introduction_screen: ^3.1.12
   sqfentity: ^2.4.0
   sqfentity_gen: ^2.4.0
 

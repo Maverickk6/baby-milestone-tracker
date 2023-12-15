@@ -13,7 +13,7 @@ class MilestoneController extends GetxController {
 
   @override
   void onInit() {
-    // addMilestone();
+    // addItem();
     loadMilestones();
     super.onInit();
   }
@@ -23,16 +23,18 @@ class MilestoneController extends GetxController {
     allMilestones.value = results;
   }
 
-  void addMilestone() async {
-    Milestone milestones = Milestone();
-    milestones.type = 'Learn to walk';
-    milestones.description = 'I want my baby to be able to run';
-    milestones.date = DateTime.parse('2023-12-23');
-    await milestones.save();
-    loadMilestones();
-  }
+  var milestone = <Milestone>[].obs;
 
-  void addItem(
+  // void addItem() async {
+  //   Milestone milestones = Milestone();
+  //   milestones.type = 'Learn to sit';
+  //   milestones.description = 'I want my baby to be able to sit on her own';
+  //   milestones.date = DateTime.parse('2023-12-23');
+  //   await milestones.save();
+  //   loadMilestones();
+  // }
+
+  void addMilestone(
     String type,
     String description,
     String date,
@@ -58,5 +60,14 @@ class MilestoneController extends GetxController {
       }
     }
     loadMilestones();
+  }
+
+  Future<Map<String, dynamic>> getMilestone(int id) async {
+    try {
+      final milestone = await Milestone().getById(id);
+      return milestone!.toMap();
+    } catch (e) {
+      return {'error': e.toString()};
+    }
   }
 }
