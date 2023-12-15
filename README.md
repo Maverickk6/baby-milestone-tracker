@@ -4,14 +4,6 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Welcome to our project! This is a wishlist App made in flutter. It allows users to quickly and easily add, delete, and update their wishlist for their kids. We hope you enjoy and we look forward to your contributions!
+The app was built using GetX state management library, and also made use of sqflite and sqfentity orm for data storage and persistence. 
 # baby-milestone-tracker
