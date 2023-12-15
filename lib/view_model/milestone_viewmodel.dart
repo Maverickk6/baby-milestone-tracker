@@ -11,6 +11,10 @@ class MilestoneController extends GetxController {
   TextEditingController descriptiontext = TextEditingController();
   TextEditingController datetext = TextEditingController();
 
+  void updateSelectedDate(newDate) {
+    datetext.value = newDate;
+  }
+
   @override
   void onInit() {
     // addItem();
