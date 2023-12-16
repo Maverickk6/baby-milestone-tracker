@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:baby_milestones_tracker/widgets/delete_dialog.dart';
+import 'package:baby_milestones_tracker/widgets/edit_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -47,9 +48,7 @@ class TileWidget extends StatelessWidget {
                     Text(
                       type,
                       style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold
-                      ),
+                          fontSize: 14, fontWeight: FontWeight.bold),
                     ),
                     const Gap(5),
                     Text(description),
@@ -81,7 +80,9 @@ class TileWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      showEditDialog(context, id);
+                    },
                     child: Container(
                       width: deviceSize.width * 0.17,
                       decoration: BoxDecoration(

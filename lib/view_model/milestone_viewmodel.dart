@@ -58,11 +58,30 @@ class MilestoneController extends GetxController {
     loadMilestones();
   }
 
-  editMilestone(id) async {
+  editMilestone(int id) async {
+    Milestone? milestone = await Milestone().select().id.equals(id).toSingle();
+    milestone?.type = typetext.text;
+    milestone?.description = descriptiontext.text;
+    milestone?.date = DateTime.parse(datetext.text);
     try {
-      // await Milestone(). ;
+      await milestone?.save();
+      Get.showSnackbar(
+        const GetSnackBar(
+          title: 'Milestone ',
+          message: 'Milestone Edited successfully',
+          duration: Duration(seconds: 3),
+        ),
+      );
+      loadMilestones();
     } catch (e) {
-      return;
+      Get.showSnackbar(
+        GetSnackBar(
+          title: 'Error Editing Milestone',
+          message: '$e.message.toString()',
+          duration: const Duration(seconds: 3),
+        ),
+      );
+      loadMilestones();
     }
   }
 
