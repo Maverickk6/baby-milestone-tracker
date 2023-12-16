@@ -37,19 +37,26 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 30),
-                Expanded(
-                  child: ListView.separated(
-                    separatorBuilder: (context, index) => const Gap(10),
-                    itemCount: milestoneView.allMilestones.length,
-                    itemBuilder: (context, index) => TileWidget(
-                        type: milestoneView.allMilestones[index].type!,
-                        description:
-                            milestoneView.allMilestones[index].description!,
-                        date: milestoneView.allMilestones[index].date!,
-                        created: milestoneView.allMilestones[index].created!,
-                        id: milestoneView.allMilestones[index].id!),
-                  ),
-                ),
+                milestoneView.allMilestones.isEmpty
+                    ? const Expanded(
+                        child: Center(
+                          child: Text('You have not set any milestones'),
+                        ),
+                      )
+                    : Expanded(
+                        child: ListView.separated(
+                          separatorBuilder: (context, index) => const Gap(10),
+                          itemCount: milestoneView.allMilestones.length,
+                          itemBuilder: (context, index) => TileWidget(
+                              type: milestoneView.allMilestones[index].type!,
+                              description: milestoneView
+                                  .allMilestones[index].description!,
+                              date: milestoneView.allMilestones[index].date!,
+                              created:
+                                  milestoneView.allMilestones[index].created!,
+                              id: milestoneView.allMilestones[index].id!),
+                        ),
+                      ),
                 FloatingActionButton(
                   onPressed: () => showAddDialog(context),
                   backgroundColor: Colors.blue,

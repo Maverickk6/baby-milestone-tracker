@@ -47,7 +47,8 @@ class TileWidget extends StatelessWidget {
                     Text(
                       type,
                       style: const TextStyle(
-                        fontSize: 10,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold
                       ),
                     ),
                     const Gap(5),

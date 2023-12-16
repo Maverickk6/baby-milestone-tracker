@@ -5,6 +5,13 @@ import 'package:get/get.dart';
 import '../model/model.dart';
 
 class MilestoneController extends GetxController {
+  @override
+  void onInit() {
+    // addItem();
+    loadMilestones();
+    super.onInit();
+  }
+
   var allMilestones = <Milestone>[].obs;
 
   TextEditingController typetext = TextEditingController();
@@ -15,11 +22,10 @@ class MilestoneController extends GetxController {
     datetext.text = newDate;
   }
 
-  @override
-  void onInit() {
-    // addItem();
-    loadMilestones();
-    super.onInit();
+  clear() {
+    typetext.clear();
+    descriptiontext.clear();
+    datetext.clear();
   }
 
   void loadMilestones() async {
@@ -49,14 +55,15 @@ class MilestoneController extends GetxController {
         duration: const Duration(seconds: 3),
       ));
     }
-
     loadMilestones();
   }
 
-  clear() {
-    typetext.clear();
-    descriptiontext.clear();
-    datetext.clear();
+  editMilestone(id) async {
+    try {
+      // await Milestone(). ;
+    } catch (e) {
+      return;
+    }
   }
 
   deleteMilestone(id) async {
@@ -76,6 +83,7 @@ class MilestoneController extends GetxController {
         message: '$e.message.toString()',
         duration: const Duration(seconds: 3),
       ));
+      loadMilestones();
     }
   }
 
