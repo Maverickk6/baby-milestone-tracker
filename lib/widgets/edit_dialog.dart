@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import '../utils/utils.dart';
 
 import '../view_model/milestone_viewmodel.dart';
 
 showEditDialog(BuildContext context, id) {
   final milestoneView = Get.put(MilestoneController());
+  final deviceSize = context.deviceSize;
 
   return showDialog(
     context: context,
@@ -20,35 +22,45 @@ showEditDialog(BuildContext context, id) {
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Milestone',
-                filled: true,
-                fillColor: Color.fromARGB(255, 233, 233, 233),
-                // hintText: '',
-              ),
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  labelText: 'Milestone',
+                  filled: true,
+                  fillColor: Color.fromARGB(255, 233, 233, 233),
+                  constraints:
+                      BoxConstraints(maxHeight: deviceSize.height * 0.07)
+                  // hintText: '',
+                  ),
               controller: milestoneView.typetext,
             ),
-            const Gap(6),
+            const Gap(10),
             TextField(
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Add a description',
-                filled: true,
-                fillColor: Color.fromARGB(255, 233, 233, 233),
-                // hintText: 'Add a milestone',
-              ),
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  labelText: 'Add a description',
+                  filled: true,
+                  fillColor: Color.fromARGB(255, 233, 233, 233),
+                  constraints:
+                      BoxConstraints(maxHeight: deviceSize.height * 0.07)
+                  // hintText: 'Add a milestone',
+                  ),
               controller: milestoneView.descriptiontext,
             ),
-            const Gap(6),
+            const Gap(10),
             TextField(
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Add a date',
-                filled: true,
-                fillColor: Color.fromARGB(255, 233, 233, 233),
-                // hintText: 'Add a milestone',
-              ),
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    
+                      borderRadius: BorderRadius.circular(20),),
+                  labelText: 'Add a date',
+                  filled: true,
+                  fillColor: Color.fromARGB(255, 233, 233, 233),
+                  constraints:
+                      BoxConstraints(maxHeight: deviceSize.height * 0.07)
+                  // hintText: 'Add a milestone',
+                  ),
               readOnly: true,
               controller: milestoneView.datetext,
               onTap: () {
